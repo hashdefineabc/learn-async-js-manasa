@@ -42,9 +42,13 @@ const server = http.createServer((req, res) => {
         if (road && location && direction && id) {
             // Send response with the extracted parameters
             res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify(incidents.filter((incident) => {
-                return incident.id === `MABOS00${id}`
-            })));
+                res.end(JSON.stringify(incidents.filter((incident) => {
+                    return incident.id === `MABOS00${id}`
+                })));
+        }
+        else {
+            res.writeHead(400, { 'Content-Type': 'text/plain' });
+            res.end('Invalid parameters');
         }
     } else {
         // If the request is for an unsupported endpoint, send a not found response
