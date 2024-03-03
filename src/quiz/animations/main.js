@@ -13,19 +13,32 @@ const aliceTumbling = [
   const alice2 = document.querySelector("#alice2");
   const alice3 = document.querySelector("#alice3");
 
-  alice1
-    .animate(aliceTumbling, aliceTiming)
-    .finished
-    .then((res) => {
-        console.log(res);
-        alice2
-            .animate(aliceTumbling, aliceTiming)
-            .finished
-            .then((res) => {
-                console.log(res);
-                alice3.animate(aliceTumbling, aliceTiming);
-            })
-    });
+  // alice1
+  //   .animate(aliceTumbling, aliceTiming)
+  //   .finished
+  //   .then((res) => {
+  //       console.log(res);
+  //       alice2
+  //           .animate(aliceTumbling, aliceTiming)
+  //           .finished
+  //           .then((res) => {
+  //               console.log(res);
+  //               alice3.animate(aliceTumbling, aliceTiming);
+  //           })
+  //   });
+
+  anim();
+
+  async function anim() {
+    try{
+      await alice1.animate(aliceTumbling, aliceTiming).finished;
+      await alice2.animate(aliceTumbling, aliceTiming).finished;
+      await alice3.animate(aliceTumbling, aliceTiming).finished;
+    }
+    catch(err) {
+      console.log(err);
+    }
+  }
 
   // Promise chain  
   // alice1.animate(aliceTumbling, aliceTiming).finished  
