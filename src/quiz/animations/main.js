@@ -27,6 +27,19 @@ const aliceTumbling = [
             })
     });
 
+    anim();
+
+    async function anim() {
+      try{
+        await alice1.animate(aliceTumbling, aliceTiming).finished;
+        await alice2.animate(aliceTumbling, aliceTiming).finished;
+        await alice3.animate(aliceTumbling, aliceTiming).finished;
+      }
+      catch(err) {
+        console.log(err);
+      }
+    }
+
   // Promise chain  
   // alice1.animate(aliceTumbling, aliceTiming).finished  
   //   .then(() => {
